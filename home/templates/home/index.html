@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block start %}
+    <h2>
+      This Template return django server
+  </h2>
+    <table class="container">
+    <tr>
+        <th>S.No</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Can Vote</th>
+    </tr>
+    {% for person in people %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+            <td {% if person.age <= 18 %} style="background-color: darkred" {% endif %}>
+                {% if person.age >= 18 %}
+                    👍
+                {% else %}
+                    👎
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
